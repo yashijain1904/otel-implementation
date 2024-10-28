@@ -12,4 +12,7 @@ This repository contains the necessary files for setting up an OpenTelemetry col
 ```bash
 # start docker (collector, jaeger, zipkin) in local
 $ npm run docker:start
+
+# stop docker
+$ mpm run docker:stop
 ```
