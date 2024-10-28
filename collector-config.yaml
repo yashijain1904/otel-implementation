@@ -1,0 +1,36 @@
+receivers:
+  otlp:
+    protocols:
+      http:
+       cors:
+          allowed_origins:
+            - http://*
+            - https://*
+ 
+processors:
+  batch:
+
+exporters:
+  jaeger:
+    endpoint: jaeger-all-in-one:14250
+    tls:
+      insecure: true
+  zipkin:
+    endpoint: "http://zipkin-all-in-one:9411/api/v2/spans"
+  otlp:
+    endpoint: https://otlp.eu01.nr-data.net:4317
+    headers:
+      api-key: <new-relic-license-key>
+
+extensions:
+  health_check:
+  pprof:
+  zpages:
+
+service:
+  extensions: [health_check, pprof, zpages]
+  pipelines:
+    traces:
+      receivers: [otlp]
+      exporters: [zipkin, jaeger, otlp]
+      processors: [batch]
