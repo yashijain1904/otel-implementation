@@ -1,6 +1,6 @@
 # Ops Automation OpenTelemetry
 
-This repository contains all the necessary files for setting up an OpenTelemetry collector.
+This repository contain necessary files for setting up an OpenTelemetry collector.
 
 ### Prerequisites
 
